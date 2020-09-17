@@ -10,3 +10,4 @@ C:\Users\splucena\Documents\BYU\SY2020\Fall\CIT365_NET_Development\workspace\Con
 C:\Users\splucena\Documents\BYU\SY2020\Fall\CIT365_NET_Development\workspace\ConsoleApplication\ConsoleApplication\obj\Debug\netcoreapp3.1\ConsoleApplication.dll
 C:\Users\splucena\Documents\BYU\SY2020\Fall\CIT365_NET_Development\workspace\ConsoleApplication\ConsoleApplication\obj\Debug\netcoreapp3.1\ConsoleApplication.pdb
 C:\Users\splucena\Documents\BYU\SY2020\Fall\CIT365_NET_Development\workspace\ConsoleApplication\ConsoleApplication\obj\Debug\netcoreapp3.1\ConsoleApplication.genruntimeconfig.cache
+C:\Users\splucena\Documents\BYU\SY2020\Fall\CIT365_NET_Development\workspace\ConsoleApplication\ConsoleApplication\obj\Debug\netcoreapp3.1\ConsoleApplication.csprojAssemblyReference.cache
