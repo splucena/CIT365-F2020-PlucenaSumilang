@@ -1,6 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Test",
+    "\\Test\\Test",
+    "\\Test\\Test\\bin\\Debug",
+    "\\Test\\Test\\bin\\Release"
   ],
   "PreviewInSolutionExplorer": false
 }
