@@ -14,17 +14,17 @@ namespace ConsoleApplication
             Console.Write("Enter your country: ");
             country = Console.ReadLine();
 
-            Console.WriteLine("My name is {0}, I am from {1}",name, country);
+            Console.WriteLine("My name is {0}, I am from {1}\n",name, country);
 
             string date;
             date = DateTime.UtcNow.ToString("MM-dd-yyyy");
-            Console.WriteLine("The current date is {0}", date);
+            Console.WriteLine("The current date is {0}\n", date);
 
             DateTime dateChristmas, currentDate;
             currentDate = DateTime.Now;
             dateChristmas = Convert.ToDateTime("12/25/2020");
 
-            Console.WriteLine("{0} Days before Christmas!", (dateChristmas - currentDate).Days);
+            Console.WriteLine("{0} Days before Christmas!\n", (dateChristmas - currentDate).Days);
 
             double width, height, woodLength, glassArea;
             string widthString, heightString;
@@ -41,7 +41,7 @@ namespace ConsoleApplication
             glassArea = 2 * (width * height);
 
             Console.WriteLine("The length of the wood is {0} feet", woodLength);
-            Console.WriteLine("The area of the glass is {0} square meters", glassArea);
+            Console.WriteLine("The area of the glass is {0} square meters\n", glassArea);
 
             Console.ReadKey();
         }
