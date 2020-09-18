@@ -14,16 +14,19 @@ namespace ConsoleApplication
             Console.Write("Enter your country: ");
             country = Console.ReadLine();
 
-            Console.WriteLine("My name is {0}, I am from {1}\n",name, country);
+            // String interpolation
+            Console.WriteLine($"My name is {name}, I am from {country}\n");
 
             string date;
             date = DateTime.UtcNow.ToString("MM-dd-yyyy");
-            Console.WriteLine("The current date is {0}\n", date);
+            // String concatenation using '+' sign
+            Console.WriteLine("The current date is " + date.ToString() + " \n");
 
             DateTime dateChristmas, currentDate;
             currentDate = DateTime.Now;
             dateChristmas = Convert.ToDateTime("12/25/2020");
 
+            // Composite formatting
             Console.WriteLine("{0} Days before Christmas!\n", (dateChristmas - currentDate).Days);
 
             double width, height, woodLength, glassArea;
@@ -40,8 +43,9 @@ namespace ConsoleApplication
             woodLength = 2 * (width + height) * 3.25;
             glassArea = 2 * (width * height);
 
-            Console.WriteLine("The length of the wood is {0} feet", woodLength);
-            Console.WriteLine("The area of the glass is {0} square meters", glassArea);
+            // String.Concat()
+            Console.WriteLine(String.Concat("The length of the wood ", woodLength, " is feet"));
+            Console.WriteLine(String.Concat("The area of the glass is ", glassArea, " square meters"));
 
             Console.ReadKey();
         }
