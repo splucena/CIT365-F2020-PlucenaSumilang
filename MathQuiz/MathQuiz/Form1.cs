@@ -47,7 +47,11 @@ namespace MathQuiz
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            // Disable all numericupdown elements.
+            sum.Enabled = false;
+            difference.Enabled = false;
+            product.Enabled = false;
+            quotient.Enabled = false;
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -60,6 +64,12 @@ namespace MathQuiz
         /// </summary>
         public void StartTheQuiz()
         {
+            // Enable numericupdown elements.
+            sum.Enabled = true;
+            difference.Enabled = true;
+            product.Enabled = true;
+            quotient.Enabled = true;
+
             // Fill in the addition problem.
             // Generate two random numbers to add.
             // Store the values in the variables 'addend1' and 'addend2'.
@@ -109,6 +119,11 @@ namespace MathQuiz
         {
             StartTheQuiz();
             startButton.Enabled = false;
+
+            sum.BackColor = Color.White;
+            difference.BackColor = Color.White;
+            product.BackColor = Color.White;
+            quotient.BackColor = Color.White;
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -119,8 +134,14 @@ namespace MathQuiz
                 // got the answer right. Stop the timer
                 // and show a Messagebox.
                 timer1.Stop();
+                System.Media.SystemSounds.Beep.Play();
                 MessageBox.Show("You got all the answers right!", "Congratulations!");
                 startButton.Enabled = true;
+                // Disable all numericupdown elements.
+                sum.Enabled = false;
+                difference.Enabled = false;
+                product.Enabled = false;
+                quotient.Enabled = false;
             }
             else if (timeLeft > 0)
             {
@@ -141,7 +162,18 @@ namespace MathQuiz
                 product.Value = multiplicand * multiplier;
                 quotient.Value = dividend / divisor;
                 startButton.Enabled = true;
+                // Disable all numericupdown elements.
+                sum.Enabled = false;
+                difference.Enabled = false;
+                product.Enabled = false;
+                quotient.Enabled = false;
             }
+
+            if (timeLeft > 0 && timeLeft < 5)
+            {
+                System.Media.SystemSounds.Hand.Play();
+            }
+            
         }
 
         private bool CheckTheAnswer()
@@ -167,6 +199,50 @@ namespace MathQuiz
             {
                 int lengthOfAnswer = answerBox.Value.ToString().Length;
                 answerBox.Select(0, lengthOfAnswer);
+            }
+        }
+
+        private void sum_ValueChanged(object sender, EventArgs e)
+        {
+            if (addend1 + addend2 == sum.Value)
+            {
+                sum.BackColor = Color.White;
+            } else
+            {
+                sum.BackColor = Color.Red;
+            }
+        }
+
+        private void difference_ValueChanged(object sender, EventArgs e)
+        {
+            if (minuend - subtrahend == difference.Value)
+            {
+                difference.BackColor = Color.White;
+            } else
+            {
+                difference.BackColor = Color.Red;
+            }
+        }
+
+        private void product_ValueChanged(object sender, EventArgs e)
+        {
+            if (multiplicand * multiplier == product.Value)
+            {
+                product.BackColor = Color.White;
+            } else
+            {
+                product.BackColor = Color.Red;
+            }
+        }
+
+        private void quotient_ValueChanged(object sender, EventArgs e)
+        {
+            if (dividend / divisor == quotient.Value)
+            {
+                quotient.BackColor = Color.White;
+            } else
+            {
+                quotient.BackColor = Color.Red;
             }
         }
     }
