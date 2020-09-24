@@ -52,6 +52,8 @@ namespace MathQuiz
             difference.Enabled = false;
             product.Enabled = false;
             quotient.Enabled = false;
+
+            lblDate.Text = DateTime.Now.ToString("dd MMMM yyyy");
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -244,6 +246,11 @@ namespace MathQuiz
             {
                 quotient.BackColor = Color.Red;
             }
+        }
+
+        private void lblDate_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
