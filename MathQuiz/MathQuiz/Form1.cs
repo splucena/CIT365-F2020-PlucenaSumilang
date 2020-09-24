@@ -58,9 +58,7 @@ namespace MathQuiz
             quotient.Enabled = false;
 
             lblDate.Text = DateTime.Now.ToString("dd MMMM yyyy");
-
-          
-            
+  
         }
 
         /// <summary>
