@@ -10,7 +10,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MathQuiz
-{
+{   
+
     public partial class frmMathQuiz : Form
     {
         // Create a random object called randomizer
@@ -43,6 +44,9 @@ namespace MathQuiz
         public frmMathQuiz()
         {
             InitializeComponent();
+
+            //this.sum.Padding = new Padding(5);
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -54,11 +58,9 @@ namespace MathQuiz
             quotient.Enabled = false;
 
             lblDate.Text = DateTime.Now.ToString("dd MMMM yyyy");
-        }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
+          
+            
         }
 
         /// <summary>
@@ -211,7 +213,7 @@ namespace MathQuiz
                 sum.BackColor = Color.White;
             } else
             {
-                sum.BackColor = Color.Red;
+                sum.BackColor = Color.FromArgb(247, 108, 108);
             }
         }
 
@@ -222,7 +224,7 @@ namespace MathQuiz
                 difference.BackColor = Color.White;
             } else
             {
-                difference.BackColor = Color.Red;
+                difference.BackColor = Color.FromArgb(247, 108, 108);
             }
         }
 
@@ -233,7 +235,7 @@ namespace MathQuiz
                 product.BackColor = Color.White;
             } else
             {
-                product.BackColor = Color.Red;
+                product.BackColor = Color.FromArgb(247, 108, 108);
             }
         }
 
@@ -244,13 +246,9 @@ namespace MathQuiz
                 quotient.BackColor = Color.White;
             } else
             {
-                quotient.BackColor = Color.Red;
+                quotient.BackColor = Color.FromArgb(247, 108, 108);
             }
         }
 
-        private void lblDate_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
