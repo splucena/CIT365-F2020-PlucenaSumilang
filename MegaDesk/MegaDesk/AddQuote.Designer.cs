@@ -35,7 +35,7 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.cbSurfaceMaterial = new System.Windows.Forms.ComboBox();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.cbNoOfDrawers = new System.Windows.Forms.ComboBox();
+            this.cbNoOfDrawers = new System.Windows.Forms.NumericUpDown();
             this.panel3 = new System.Windows.Forms.Panel();
             this.txtDepth = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -95,6 +95,7 @@
             this.panel7.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cbNoOfDrawers)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -142,7 +143,6 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.Size = new System.Drawing.Size(404, 421);
             this.tableLayoutPanel1.TabIndex = 0;
-            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
             // panel8
             // 
@@ -206,7 +206,6 @@
             this.cbSurfaceMaterial.Name = "cbSurfaceMaterial";
             this.cbSurfaceMaterial.Size = new System.Drawing.Size(242, 25);
             this.cbSurfaceMaterial.TabIndex = 4;
-            this.cbSurfaceMaterial.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // panel4
             // 
@@ -225,25 +224,11 @@
             // 
             // cbNoOfDrawers
             // 
-            this.cbNoOfDrawers.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cbNoOfDrawers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cbNoOfDrawers.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.cbNoOfDrawers.FormattingEnabled = true;
-            this.cbNoOfDrawers.Items.AddRange(new object[] {
-            "0",
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7"});
-            this.cbNoOfDrawers.Location = new System.Drawing.Point(4, 4);
-            this.cbNoOfDrawers.Margin = new System.Windows.Forms.Padding(8);
+            this.cbNoOfDrawers.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.cbNoOfDrawers.Location = new System.Drawing.Point(8, 8);
             this.cbNoOfDrawers.Name = "cbNoOfDrawers";
-            this.cbNoOfDrawers.Size = new System.Drawing.Size(242, 25);
+            this.cbNoOfDrawers.Size = new System.Drawing.Size(234, 17);
             this.cbNoOfDrawers.TabIndex = 3;
-            this.cbNoOfDrawers.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
             // 
             // panel3
             // 
@@ -296,7 +281,6 @@
             this.txtWidth.Name = "txtWidth";
             this.txtWidth.Size = new System.Drawing.Size(234, 16);
             this.txtWidth.TabIndex = 1;
-            this.txtWidth.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // label1
             // 
@@ -483,7 +467,6 @@
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(234, 16);
             this.txtName.TabIndex = 0;
-            this.txtName.TextChanged += new System.EventHandler(this.txtName_TextChanged);
             // 
             // panel6
             // 
@@ -516,7 +499,6 @@
             this.cbOrderOptions.Name = "cbOrderOptions";
             this.cbOrderOptions.Size = new System.Drawing.Size(242, 25);
             this.cbOrderOptions.TabIndex = 5;
-            this.cbOrderOptions.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
             // tlpQuote
             // 
@@ -577,7 +559,6 @@
             this.tlpQuote.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.692308F));
             this.tlpQuote.Size = new System.Drawing.Size(302, 418);
             this.tlpQuote.TabIndex = 1;
-            this.tlpQuote.Paint += new System.Windows.Forms.PaintEventHandler(this.tlpQuote_Paint);
             // 
             // lblShippingCost
             // 
@@ -585,7 +566,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblShippingCost.AutoSize = true;
-            this.lblShippingCost.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lblShippingCost.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.lblShippingCost.Location = new System.Drawing.Point(159, 352);
             this.lblShippingCost.Name = "lblShippingCost";
             this.lblShippingCost.Size = new System.Drawing.Size(140, 32);
@@ -613,7 +594,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblMaterialCost.AutoSize = true;
-            this.lblMaterialCost.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lblMaterialCost.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.lblMaterialCost.Location = new System.Drawing.Point(159, 288);
             this.lblMaterialCost.Name = "lblMaterialCost";
             this.lblMaterialCost.Size = new System.Drawing.Size(140, 32);
@@ -641,7 +622,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblDrawerCost.AutoSize = true;
-            this.lblDrawerCost.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lblDrawerCost.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.lblDrawerCost.Location = new System.Drawing.Point(159, 224);
             this.lblDrawerCost.Name = "lblDrawerCost";
             this.lblDrawerCost.Size = new System.Drawing.Size(140, 32);
@@ -669,7 +650,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblSizeCost.AutoSize = true;
-            this.lblSizeCost.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lblSizeCost.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.lblSizeCost.Location = new System.Drawing.Point(159, 160);
             this.lblSizeCost.Name = "lblSizeCost";
             this.lblSizeCost.Size = new System.Drawing.Size(140, 32);
@@ -746,7 +727,6 @@
             this.label9.TabIndex = 22;
             this.label9.Text = "Base Size Included";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
             // label8
             // 
@@ -761,7 +741,6 @@
             this.label8.TabIndex = 21;
             this.label8.Text = "Base Price";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // label10
             // 
@@ -1021,7 +1000,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblCustomerName.AutoSize = true;
-            this.lblCustomerName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lblCustomerName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.lblCustomerName.Location = new System.Drawing.Point(159, 0);
             this.lblCustomerName.Name = "lblCustomerName";
             this.lblCustomerName.Size = new System.Drawing.Size(140, 32);
@@ -1063,8 +1042,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTotalCost.AutoSize = true;
-            this.lblTotalCost.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblTotalCost.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lblTotalCost.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.lblTotalCost.Location = new System.Drawing.Point(159, 384);
             this.lblTotalCost.Name = "lblTotalCost";
             this.lblTotalCost.Size = new System.Drawing.Size(140, 34);
@@ -1089,6 +1067,7 @@
             this.panel7.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.cbNoOfDrawers)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -1119,7 +1098,6 @@
         private System.Windows.Forms.TextBox txtWidth;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox cbOrderOptions;
-        private System.Windows.Forms.ComboBox cbNoOfDrawers;
         private System.Windows.Forms.TextBox txtDepth;
         private System.Windows.Forms.Button btnAddQuote;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
@@ -1169,6 +1147,7 @@
         private System.Windows.Forms.Label lblBaseSizeIncluded;
         private System.Windows.Forms.Label lblCostPerIn;
         private System.Windows.Forms.Label lblTotalCost;
+        private System.Windows.Forms.NumericUpDown cbNoOfDrawers;
     }
 }
 

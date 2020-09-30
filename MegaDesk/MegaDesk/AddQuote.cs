@@ -24,55 +24,13 @@ namespace MegaDesk
     {
         public AddQuote()
         {
-            InitializeComponent();
-
-            
-        }
-
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
+            InitializeComponent();            
         }
 
         private void AddQuote_Load(object sender, EventArgs e)
         {
             cbSurfaceMaterial.DataSource = Enum.GetValues(typeof(SurfaceMaterial));
             cbSurfaceMaterial.SelectedItem = SurfaceMaterial.Laminate;
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtName_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -100,9 +58,9 @@ namespace MegaDesk
             int rushOptionDays = int.Parse(cbOrderOptions.Text);
             string surfaceMaterial = cbSurfaceMaterial.Text;
 
+            // Crete desk
             Desk d = new Desk(width, depth, numberOfDrawer, surfaceMaterial, rushOptionDays);
-            //decimal totalSizeCost = Math.Round(d.computeDeskPrice(), 2);
-
+            
             // Quote details
             // Customer name
             lblCustomerName.Text = txtName.Text;
@@ -129,28 +87,13 @@ namespace MegaDesk
                 shippingMethod = $"Rush - {rushOptionDays} Days";
             } else
             {
-                shippingMethod = $"{rushOptionDays} Days";
+                shippingMethod = $"Normal - {rushOptionDays} Days";
             }
             lblShippingMethod.Text = shippingMethod;
             lblShippingCost.Text = Math.Round(d.computeShippingCost(), 2).ToString("F");
 
             // Total cost
             lblTotalCost.Text = Math.Round(d.computeDeskPrice(), 2).ToString("F");
-        }
-
-        private void label8_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label9_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tlpQuote_Paint(object sender, PaintEventArgs e)
-        {
-
         }
     }
 }
