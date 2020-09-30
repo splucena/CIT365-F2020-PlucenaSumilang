@@ -141,7 +141,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(404, 421);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(404, 417);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // panel8
@@ -397,7 +397,7 @@
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(262, 65);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(262, 61);
             this.tableLayoutPanel2.TabIndex = 10;
             // 
             // btnCancel
@@ -414,8 +414,8 @@
             this.btnCancel.Location = new System.Drawing.Point(139, 8);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(8);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Padding = new System.Windows.Forms.Padding(10);
-            this.btnCancel.Size = new System.Drawing.Size(115, 49);
+            this.btnCancel.Padding = new System.Windows.Forms.Padding(8);
+            this.btnCancel.Size = new System.Drawing.Size(115, 45);
             this.btnCancel.TabIndex = 8;
             this.btnCancel.Text = "&Cancel";
             this.btnCancel.UseVisualStyleBackColor = false;
@@ -435,8 +435,8 @@
             this.btnAddQuote.Location = new System.Drawing.Point(8, 8);
             this.btnAddQuote.Margin = new System.Windows.Forms.Padding(8);
             this.btnAddQuote.Name = "btnAddQuote";
-            this.btnAddQuote.Padding = new System.Windows.Forms.Padding(10);
-            this.btnAddQuote.Size = new System.Drawing.Size(115, 49);
+            this.btnAddQuote.Padding = new System.Windows.Forms.Padding(8);
+            this.btnAddQuote.Size = new System.Drawing.Size(115, 45);
             this.btnAddQuote.TabIndex = 7;
             this.btnAddQuote.Text = "Add &Quote";
             this.btnAddQuote.UseVisualStyleBackColor = false;

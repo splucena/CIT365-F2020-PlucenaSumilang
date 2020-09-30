@@ -40,7 +40,6 @@ namespace MegaDesk
             string sizeCost = Math.Round(dq._desk.computeDeskSizeCost(), 2).ToString("F");
 
             // Drawer
-            //lblPricePerDrawer.Text = "50.00";
             string drawerCost = Math.Round(dq._desk.computeDrawerCost(), 2).ToString("F");
 
             // Surface material
@@ -64,8 +63,8 @@ namespace MegaDesk
             // Total cost
             string totalCost = Math.Round(dq._desk.computeDeskPrice(), 2).ToString("F");
 
-            string deskQuote = $"{customerName}, {dateCreated}, {totalSurfaceArea}," +
-                        $"{sizeCost}, {drawerCost}, {material}, {materialCost}, {shippingMethod}," +
+            string deskQuote = $"{customerName}, {dateCreated}, {totalSurfaceArea}, " +
+                        $"{sizeCost}, {drawerCost}, {material}, {materialCost}, {shippingMethod}, " +
                         $"{shippingCost}, {totalCost}";
 
             string path = @"qoutes.txt";
