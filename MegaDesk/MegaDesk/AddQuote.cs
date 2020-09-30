@@ -24,7 +24,7 @@ namespace MegaDesk
     {
         public AddQuote()
         {
-            InitializeComponent();            
+            InitializeComponent();             
         }
 
         private void AddQuote_Load(object sender, EventArgs e)
@@ -59,7 +59,7 @@ namespace MegaDesk
             string surfaceMaterial = cbSurfaceMaterial.Text;
 
             // Crete desk
-            Desk d = new Desk(width, depth, numberOfDrawer, surfaceMaterial, rushOptionDays);
+            Desk d = new Desk(width, depth, numberOfDrawer, surfaceMaterial, rushOptionDays); 
             
             // Quote details
             // Customer name
@@ -94,6 +94,11 @@ namespace MegaDesk
 
             // Total cost
             lblTotalCost.Text = Math.Round(d.computeDeskPrice(), 2).ToString("F");
+
+            // Create DeskQuote
+            DeskQuote dq = new DeskQuote(d, Convert.ToDateTime(dtDateCreated.Value), txtName.Text);
+            dq.saveDeskQuote(dq);
+            dq.displayDeskQuotes();
         }
     }
 }

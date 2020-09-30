@@ -31,7 +31,7 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel8 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dtDateCreated = new System.Windows.Forms.DateTimePicker();
             this.panel5 = new System.Windows.Forms.Panel();
             this.cbSurfaceMaterial = new System.Windows.Forms.ComboBox();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -162,7 +162,7 @@
             // panel7
             // 
             this.panel7.BackColor = System.Drawing.Color.White;
-            this.panel7.Controls.Add(this.dateTimePicker1);
+            this.panel7.Controls.Add(this.dtDateCreated);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel7.Location = new System.Drawing.Point(8, 8);
             this.panel7.Margin = new System.Windows.Forms.Padding(0);
@@ -170,15 +170,15 @@
             this.panel7.Size = new System.Drawing.Size(234, 16);
             this.panel7.TabIndex = 13;
             // 
-            // dateTimePicker1
+            // dtDateCreated
             // 
-            this.dateTimePicker1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(-3, -3);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(241, 23);
-            this.dateTimePicker1.TabIndex = 6;
+            this.dtDateCreated.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.dtDateCreated.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.dtDateCreated.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtDateCreated.Location = new System.Drawing.Point(-3, -3);
+            this.dtDateCreated.Name = "dtDateCreated";
+            this.dtDateCreated.Size = new System.Drawing.Size(241, 23);
+            this.dtDateCreated.TabIndex = 6;
             // 
             // panel5
             // 
@@ -1110,7 +1110,7 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Panel panel8;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dtDateCreated;
         private System.Windows.Forms.TableLayoutPanel tlpQuote;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
