@@ -8,5 +8,15 @@ namespace MegaDesk
 {
     class DeskQuote
     {
+        private Desk _desk;
+        private DateTime _shippingDate;
+        private String _customerName;
+
+        public DeskQuote(Desk desk, DateTime shippingDate, String customerName)
+        {
+            _desk = desk;
+            _shippingDate = shippingDate;
+            _customerName = customerName;
+        }
     }
 }
