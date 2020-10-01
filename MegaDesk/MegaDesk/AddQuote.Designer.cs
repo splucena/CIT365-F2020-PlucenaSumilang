@@ -391,7 +391,7 @@
             this.btnCancel.Padding = new System.Windows.Forms.Padding(8);
             this.btnCancel.Size = new System.Drawing.Size(115, 45);
             this.btnCancel.TabIndex = 8;
-            this.btnCancel.Text = "&Cancel";
+            this.btnCancel.Text = "&Close";
             this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
@@ -499,6 +499,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "AddQuote";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Add Quote";
             this.Load += new System.EventHandler(this.AddQuote_Load);
             this.tableLayoutPanel1.ResumeLayout(false);

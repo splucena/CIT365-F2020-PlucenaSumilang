@@ -757,7 +757,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ViewAllQuotes";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Desk Quotes";
             this.Load += new System.EventHandler(this.ViewAllQuotes_Load);
             this.tlpQuote.ResumeLayout(false);

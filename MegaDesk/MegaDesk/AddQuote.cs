@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlTypes;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -13,14 +14,14 @@ using System.Windows.Forms;
 namespace MegaDesk
 
 {
-    public enum SurfaceMaterial
-    {
-        Laminate,
-        Oak,
-        Rosewood,
-        Veneer,
-        Pine,
-    };
+    //public enum SurfaceMaterial
+    //{
+    //    Laminate,
+    //    Oak,
+    //    Rosewood,
+    //    Veneer,
+    //    Pine,
+    //};
     public partial class AddQuote : Form
     {
         public static string dateCreated;
@@ -111,14 +112,14 @@ namespace MegaDesk
                 DisplayQuote displayQuote = new DisplayQuote();
                 dateCreated = dtDateCreated.Text;
                 customerName = txtName.Text;
-                totalSize = $"{Math.Round(d.computeSurfaceArea(width, depth), 2)}";
-                sizeCost = Math.Round(d.computeDeskSizeCost(), 2).ToString("F");
-                drawerCost = Math.Round(d.computeDrawerCost(), 2).ToString("F");
+                totalSize = $"{Math.Round(dq.computeSurfaceArea(width, depth), 2)}";
+                sizeCost = Math.Round(dq.computeDeskSizeCost(), 2).ToString("F");
+                drawerCost = Math.Round(dq.computeDrawerCost(), 2).ToString("F");
                 material = surfaceMaterial;
-                materialCost = Math.Round(d.computeSurfaceMaterialCost(), 2).ToString("F");
+                materialCost = Math.Round(dq.computeSurfaceMaterialCost(), 2).ToString("F");
                 shippingMethod = _shippingMethod;
-                shippingCost = Math.Round(d.computeShippingCost(), 2).ToString("F");
-                totalCost = Math.Round(d.computeDeskPrice(), 2).ToString("F");
+                shippingCost = Math.Round(dq.computeShippingCost(), 2).ToString("F");
+                totalCost = Math.Round(dq.computeDeskPrice(), 2).ToString("F");
 
                 if (ValidateChildren(ValidationConstraints.Enabled))
                 {
@@ -160,9 +161,14 @@ namespace MegaDesk
 
         private void txtWidth_Validating(object sender, CancelEventArgs e)
         {
-            Console.WriteLine("Validating");
             Regex numberchk = new Regex(@"^([0-9]*|\d*)$");
-            if (numberchk.IsMatch(txtWidth.Text) && (!string.IsNullOrEmpty(txtWidth.Text)))
+
+            decimal minDeskWidth = Desk.MIN_DESK_WIDTH;
+            decimal maxDeskWidth = Desk.MAX_DESK_WIDTH;
+            decimal width;            
+            bool success = decimal.TryParse(txtWidth.Text, out width);
+            if (numberchk.IsMatch(txtWidth.Text) && (!string.IsNullOrEmpty(txtWidth.Text)) 
+                &&  (width >= minDeskWidth) && (width <= maxDeskWidth) && success)
             {
                 epInvalid.SetError(txtWidth, null);
                 epCorrect.SetError(txtWidth, "Correct");
@@ -171,7 +177,7 @@ namespace MegaDesk
             {
                 e.Cancel = true;
                 txtWidth.Focus();
-                epInvalid.SetError(txtWidth, "Accepts numeric values only");
+                epInvalid.SetError(txtWidth, "Accepts numeric values only and values from 24 to 96 only.");
                 epCorrect.SetError(txtWidth, null);
             }
         }
@@ -192,7 +198,12 @@ namespace MegaDesk
         private void txtDepth_Validating(object sender, CancelEventArgs e)
         {
             Regex numberchk = new Regex(@"^([0-9]*|\d*)$");
-            if (numberchk.IsMatch(txtDepth.Text) && (!string.IsNullOrEmpty(txtDepth.Text)))
+            decimal minDeskDepth = Desk.MIN_DESK_DEPTH;
+            decimal maxDeskDepth = Desk.MAX_DESK_DEPTH;
+            decimal depth;
+            bool success = decimal.TryParse(txtDepth.Text, out depth);
+            if (numberchk.IsMatch(txtDepth.Text) && (!string.IsNullOrEmpty(txtDepth.Text))
+                && (depth >= minDeskDepth) && (depth <= maxDeskDepth) && success)
             {
                 epInvalid.SetError(txtDepth, null);
                 epCorrect.SetError(txtDepth, "Correct");
@@ -201,7 +212,7 @@ namespace MegaDesk
             {
                 e.Cancel = true;
                 txtDepth.Focus();
-                epInvalid.SetError(txtDepth, "Accepts numeric values only");
+                epInvalid.SetError(txtDepth, "Accepts numeric values only and values from 24 to 48.");
                 epCorrect.SetError(txtDepth, null);
             }
         }

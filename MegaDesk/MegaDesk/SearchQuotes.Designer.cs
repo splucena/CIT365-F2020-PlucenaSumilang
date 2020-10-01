@@ -181,6 +181,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "SearchQuotes";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "SearchQuotes";
             this.Load += new System.EventHandler(this.SearchQuotes_Load);
             this.groupBox1.ResumeLayout(false);

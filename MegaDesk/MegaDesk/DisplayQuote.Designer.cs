@@ -30,6 +30,8 @@
         {
             this.gbDisplayQuote = new System.Windows.Forms.GroupBox();
             this.tlpQuote = new System.Windows.Forms.TableLayoutPanel();
+            this.lblDate = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.lblShippingCost = new System.Windows.Forms.Label();
             this.lblShippingMethod = new System.Windows.Forms.Label();
             this.lblMaterialCost = new System.Windows.Forms.Label();
@@ -65,8 +67,6 @@
             this.lblBaseSizeIncluded = new System.Windows.Forms.Label();
             this.lblCostPerIn = new System.Windows.Forms.Label();
             this.lblTotalCost = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.lblDate = new System.Windows.Forms.Label();
             this.btnClose = new System.Windows.Forms.Button();
             this.gbDisplayQuote.SuspendLayout();
             this.tlpQuote.SuspendLayout();
@@ -149,6 +149,34 @@
             this.tlpQuote.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tlpQuote.Size = new System.Drawing.Size(306, 428);
             this.tlpQuote.TabIndex = 2;
+            // 
+            // lblDate
+            // 
+            this.lblDate.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblDate.AutoSize = true;
+            this.lblDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lblDate.Location = new System.Drawing.Point(159, 0);
+            this.lblDate.Name = "lblDate";
+            this.lblDate.Size = new System.Drawing.Size(144, 30);
+            this.lblDate.TabIndex = 43;
+            this.lblDate.Text = "...";
+            this.lblDate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(128, 30);
+            this.label1.TabIndex = 22;
+            this.label1.Text = "Date";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // lblShippingCost
             // 
@@ -640,34 +668,6 @@
             this.lblTotalCost.Text = "...";
             this.lblTotalCost.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(3, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(128, 30);
-            this.label1.TabIndex = 22;
-            this.label1.Text = "Date";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // lblDate
-            // 
-            this.lblDate.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblDate.AutoSize = true;
-            this.lblDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.lblDate.Location = new System.Drawing.Point(159, 0);
-            this.lblDate.Name = "lblDate";
-            this.lblDate.Size = new System.Drawing.Size(144, 30);
-            this.lblDate.TabIndex = 43;
-            this.lblDate.Text = "...";
-            this.lblDate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
             // btnClose
             // 
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -701,7 +701,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "DisplayQuote";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "DisplayQuote";
             this.Load += new System.EventHandler(this.DisplayQuote_Load);
             this.gbDisplayQuote.ResumeLayout(false);
