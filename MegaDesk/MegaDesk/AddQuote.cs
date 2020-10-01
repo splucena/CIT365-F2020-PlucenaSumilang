@@ -72,7 +72,10 @@ namespace MegaDesk
 
             if (!allValid)
             {
-                MessageBox.Show("Please fill-in all required values.", "Error", MessageBoxButtons.OK);
+                MessageBox.Show("Please fill-in all required values.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                epInvalid.SetError(txtName, "Required!");
+                epInvalid.SetError(txtWidth, "Required!");
+                epInvalid.SetError(txtDepth, "Required!");
             }
             else
             {
@@ -214,6 +217,20 @@ namespace MegaDesk
                 txtDepth.Focus();
                 epInvalid.SetError(txtDepth, "Accepts numeric values only and values from 24 to 48.");
                 epCorrect.SetError(txtDepth, null);
+            }
+        }
+
+        private void txtName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Regex valid = new Regex(@"^[A-Za-z ]+$");
+            if (valid.IsMatch(txtName.Text))
+            {
+                epInvalid.SetError(txtName, null);
+                epCorrect.SetError(txtName, "Correct");
+            } else
+            {
+                epInvalid.SetError(txtName, "Alphabet and spaces only.");
+                epCorrect.SetError(txtName, null);
             }
         }
     }

@@ -44,5 +44,10 @@ namespace MegaDesk
                 Environment.Exit(1);
             }
         }
+
+        private void MainMenu_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -441,6 +441,7 @@
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(222, 16);
             this.txtName.TabIndex = 0;
+            this.txtName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtName_KeyPress);
             this.txtName.Validating += new System.ComponentModel.CancelEventHandler(this.txtName_Validating);
             // 
             // panel6
