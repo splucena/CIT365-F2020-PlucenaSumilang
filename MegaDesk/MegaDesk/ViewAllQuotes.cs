@@ -13,14 +13,21 @@ namespace MegaDesk
 {
     public partial class ViewAllQuotes : Form
     {
+        private ListViewColumnSorter lvwColumnSorter;
         public ViewAllQuotes()
         {
             InitializeComponent();
+            // Create an instance of a ListView column sorter and assign it
+            // to the ListView control.
+            lvwColumnSorter = new ListViewColumnSorter();
+            this.lvQuotes.ListViewItemSorter = lvwColumnSorter;
         }
 
         private void ViewAllQuotes_Load(object sender, EventArgs e)
         {
             lvQuotes.View = View.Details;
+            // Used for creating column headers.
+            ColumnHeader columnheader;
 
             // Read content of file storage
             string[] lines = File.ReadAllLines(@"qoutes.txt");
@@ -29,6 +36,12 @@ namespace MegaDesk
                 //string[] quote = line.Split(new string[] { "," }, StringSplitOptions.None);
                 string[] quote = line.Split(',');
                 lvQuotes.Items.Add(new ListViewItem(quote));
+            }
+
+            // Loop through and size each column header to fit the column header text.
+            foreach (ColumnHeader ch in this.lvQuotes.Columns)
+            {
+                ch.Width = -2;
             }
         }
 
@@ -70,6 +83,32 @@ namespace MegaDesk
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void lvQuotes_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            // Determine if clicked column is already the column that is being sorted.
+            if (e.Column == lvwColumnSorter.SortColumn)
+            {
+                // Reverse the current sort direction for this column.
+                if (lvwColumnSorter.Order == SortOrder.Ascending)
+                {
+                    lvwColumnSorter.Order = SortOrder.Descending;
+                }
+                else
+                {
+                    lvwColumnSorter.Order = SortOrder.Ascending;
+                }
+            }
+            else
+            {
+                // Set the column number that is to be sorted; default to ascending.
+                lvwColumnSorter.SortColumn = e.Column;
+                lvwColumnSorter.Order = SortOrder.Ascending;
+            }
+
+            // Perform the sort with these new sort options.
+            this.lvQuotes.Sort();
         }
     }
 }

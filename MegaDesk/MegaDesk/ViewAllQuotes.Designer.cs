@@ -105,6 +105,7 @@
             this.lvQuotes.Size = new System.Drawing.Size(561, 438);
             this.lvQuotes.TabIndex = 0;
             this.lvQuotes.UseCompatibleStateImageBehavior = false;
+            this.lvQuotes.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.lvQuotes_ColumnClick);
             this.lvQuotes.SelectedIndexChanged += new System.EventHandler(this.lvQuotes_SelectedIndexChanged);
             // 
             // customerName

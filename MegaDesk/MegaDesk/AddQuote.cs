@@ -6,6 +6,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -41,87 +42,168 @@ namespace MegaDesk
         {
             cbSurfaceMaterial.DataSource = Enum.GetValues(typeof(SurfaceMaterial));
             cbSurfaceMaterial.SelectedItem = SurfaceMaterial.Laminate;
+
+            cbOrderOptions.SelectedIndex = 0;
+           
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            StreamWriter writer;
-            writer = new StreamWriter("test.txt");
-
-            writer.WriteLine("hello");
-            writer.Close();
+            this.Close();
         }
 
         private void btnAddQuote_Click(object sender, EventArgs e)
         {
-            //StreamReader reader = new StreamReader("test.txt");
 
-            //while (reader.EndOfStream == false) {
-            //    string line = reader.ReadLine();
-            //    rtDetails.Text = line;
-            //}
-            //reader.Close();
+            bool allValid = true;
+            string[] controls = { txtName.Text, txtWidth.Text, txtDepth.Text, 
+                cbNoOfDrawers.Value.ToString(), cbOrderOptions.Text, cbSurfaceMaterial.Text, dtDateCreated.Text };
 
-            decimal width = decimal.Parse(txtWidth.Text);
-            decimal depth = decimal.Parse(txtDepth.Text);
-            int numberOfDrawer = int.Parse(cbNoOfDrawers.Text);
-            int rushOptionDays = int.Parse(cbOrderOptions.Text);
-            string surfaceMaterial = cbSurfaceMaterial.Text;
-
-            // Crete desk
-            Desk d = new Desk(width, depth, numberOfDrawer, surfaceMaterial, rushOptionDays); 
-            
-            // Quote details
-            // Customer name
-            lblCustomerName.Text = txtName.Text;
-
-            // Desk details
-            lblBasePrice.Text = "200.00";
-            lblBaseSizeIncluded.Text = "1000.00";
-            lblCostPerIn.Text = "1.00";
-            lblTotalSizeIn.Text = $"{Math.Round(d.computeSurfaceArea(width, depth), 2)}";
-            lblSizeCost.Text = Math.Round(d.computeDeskSizeCost(), 2).ToString("F");
-
-            // Drawer
-            lblPricePerDrawer.Text = "50.00";
-            lblDrawerCost.Text = Math.Round(d.computeDrawerCost(), 2).ToString("F");
-
-            // Surface material
-            lblMaterial.Text = surfaceMaterial;
-            lblMaterialCost.Text = Math.Round(d.computeSurfaceMaterialCost(), 2).ToString("F");
-
-            // Shipping details
-            string _shippingMethod = null;
-            if (rushOptionDays != 14)
+            foreach(string c in controls)
             {
-                _shippingMethod = $"Rush - {rushOptionDays} Days";
+                if (string.IsNullOrEmpty(c))
+                {
+                    allValid = false;
+                }
+            }
+
+            Console.WriteLine(allValid);
+
+            if (!allValid)
+            {
+                MessageBox.Show("Please fill-in all required values.", "Error", MessageBoxButtons.OK);
+            }
+            else
+            {
+                // Get values for desk class
+                decimal width; 
+                bool widthIsDecimal =  decimal.TryParse(txtWidth.Text, out width);
+
+                decimal depth;
+                bool depthIsDecimal = decimal.TryParse(txtDepth.Text, out depth);
+
+                int numberOfDrawer; 
+                bool noOfDrawerIsInt = int.TryParse(cbNoOfDrawers.Text, out numberOfDrawer);
+
+                int rushOptionDays;
+                bool rushOptionsDaysIsInt = int.TryParse(cbOrderOptions.Text, out rushOptionDays);
+                string surfaceMaterial = cbSurfaceMaterial.Text;
+
+                // Crete desk
+                Desk d = new Desk(width, depth, numberOfDrawer, surfaceMaterial, rushOptionDays);
+
+                // Shipping details
+                string _shippingMethod = null;
+                if (rushOptionDays != 14)
+                {
+                    _shippingMethod = $"Rush - {rushOptionDays} Days";
+                }
+                else
+                {
+                    _shippingMethod = $"Normal - {rushOptionDays} Days";
+                }
+                // Create DeskQuote
+                DeskQuote dq = new DeskQuote(d, Convert.ToDateTime(dtDateCreated.Value), txtName.Text);
+                dq.saveDeskQuote(dq);
+                dq.displayDeskQuotes();
+
+                // Create and pass data to DisplayQuote form
+                DisplayQuote displayQuote = new DisplayQuote();
+                dateCreated = dtDateCreated.Text;
+                customerName = txtName.Text;
+                totalSize = $"{Math.Round(d.computeSurfaceArea(width, depth), 2)}";
+                sizeCost = Math.Round(d.computeDeskSizeCost(), 2).ToString("F");
+                drawerCost = Math.Round(d.computeDrawerCost(), 2).ToString("F");
+                material = surfaceMaterial;
+                materialCost = Math.Round(d.computeSurfaceMaterialCost(), 2).ToString("F");
+                shippingMethod = _shippingMethod;
+                shippingCost = Math.Round(d.computeShippingCost(), 2).ToString("F");
+                totalCost = Math.Round(d.computeDeskPrice(), 2).ToString("F");
+
+                if (ValidateChildren(ValidationConstraints.Enabled))
+                {
+                    displayQuote.ShowDialog();
+                }
+            }
+        }
+
+        private void txtName_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtName.Text))
+            {
+                e.Cancel = true;
+                txtName.Focus();
+                epInvalid.SetError(txtName, "Please provide customer name.");
+                epCorrect.SetError(txtName, null);
             } else
             {
-                _shippingMethod = $"Normal - {rushOptionDays} Days";
+                //e.Cancel = true;
+                epInvalid.SetError(txtName, null);
+                epCorrect.SetError(txtName, "Corret");
             }
-            lblShippingMethod.Text = _shippingMethod;
-            lblShippingCost.Text = Math.Round(d.computeShippingCost(), 2).ToString("F");
+        }
 
-            // Total cost
-            lblTotalCost.Text = Math.Round(d.computeDeskPrice(), 2).ToString("F");
+        private void txtWidth_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            Regex numberchk = new Regex(@"^([0-9]*|\d*)$");
+            if (numberchk.IsMatch(txtWidth.Text) && (!string.IsNullOrEmpty(txtWidth.Text)))
+            {
+                epInvalid.SetError(txtWidth, null);
+                epCorrect.SetError(txtWidth, "Correct");
+            } else
+            {
+                epInvalid.SetError(txtWidth, "Accepts numeric values only");
+                epCorrect.SetError(txtWidth, null);
+            }
 
-            // Create DeskQuote
-            DeskQuote dq = new DeskQuote(d, Convert.ToDateTime(dtDateCreated.Value), txtName.Text);
-            dq.saveDeskQuote(dq);
-            dq.displayDeskQuotes();
+        }
 
-            DisplayQuote displayQuote = new DisplayQuote();
-            dateCreated = dtDateCreated.Text;
-            customerName = txtName.Text;
-            totalSize = $"{Math.Round(d.computeSurfaceArea(width, depth), 2)}";
-            sizeCost = Math.Round(d.computeDeskSizeCost(), 2).ToString("F");
-            drawerCost = Math.Round(d.computeDrawerCost(), 2).ToString("F");
-            material = surfaceMaterial;
-            materialCost = Math.Round(d.computeSurfaceMaterialCost(), 2).ToString("F");
-            shippingMethod = _shippingMethod;
-            shippingCost = Math.Round(d.computeShippingCost(), 2).ToString("F");
-            totalCost = Math.Round(d.computeDeskPrice(), 2).ToString("F");
-            displayQuote.ShowDialog();
+        private void txtWidth_Validating(object sender, CancelEventArgs e)
+        {
+            Console.WriteLine("Validating");
+            Regex numberchk = new Regex(@"^([0-9]*|\d*)$");
+            if (numberchk.IsMatch(txtWidth.Text) && (!string.IsNullOrEmpty(txtWidth.Text)))
+            {
+                epInvalid.SetError(txtWidth, null);
+                epCorrect.SetError(txtWidth, "Correct");
+            }
+            else
+            {
+                e.Cancel = true;
+                txtWidth.Focus();
+                epInvalid.SetError(txtWidth, "Accepts numeric values only");
+                epCorrect.SetError(txtWidth, null);
+            }
+        }
+
+        private void txtDepth_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && char.IsDigit(e.KeyChar))
+            {
+                epInvalid.SetError(txtDepth, null);
+                epCorrect.SetError(txtDepth, "Corret");
+            } else
+            {
+                epInvalid.SetError(txtDepth, "Accepts numeric values only");
+                epCorrect.SetError(txtDepth, null);
+            }
+        }
+
+        private void txtDepth_Validating(object sender, CancelEventArgs e)
+        {
+            Regex numberchk = new Regex(@"^([0-9]*|\d*)$");
+            if (numberchk.IsMatch(txtDepth.Text) && (!string.IsNullOrEmpty(txtDepth.Text)))
+            {
+                epInvalid.SetError(txtDepth, null);
+                epCorrect.SetError(txtDepth, "Correct");
+            }
+            else
+            {
+                e.Cancel = true;
+                txtDepth.Focus();
+                epInvalid.SetError(txtDepth, "Accepts numeric values only");
+                epCorrect.SetError(txtDepth, null);
+            }
         }
     }
 }
