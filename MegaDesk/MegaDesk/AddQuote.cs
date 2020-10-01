@@ -226,12 +226,13 @@ namespace MegaDesk
             if (valid.IsMatch(txtName.Text))
             {
                 epInvalid.SetError(txtName, null);
-                epCorrect.SetError(txtName, "Correct");
+                epCorrect.SetError(txtName, "Correct");                
             } else
             {
                 epInvalid.SetError(txtName, "Alphabet and spaces only.");
                 epCorrect.SetError(txtName, null);
             }
+            e.KeyChar = Char.ToUpper(e.KeyChar);
         }
     }
 }
