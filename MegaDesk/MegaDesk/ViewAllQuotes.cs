@@ -69,8 +69,6 @@ namespace MegaDesk
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            //ViewAllQuotes v = new ViewAllQuotes();
-            //v.Close();
             this.Close();
         }
     }

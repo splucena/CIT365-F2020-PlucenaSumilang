@@ -22,6 +22,16 @@ namespace MegaDesk
     };
     public partial class AddQuote : Form
     {
+        public static string dateCreated;
+        public static string customerName;
+        public static string totalSize;
+        public static string sizeCost;
+        public static string drawerCost;
+        public static string material;
+        public static string materialCost;
+        public static string shippingMethod;
+        public static string shippingCost;
+        public static string totalCost;
         public AddQuote()
         {
             InitializeComponent();             
@@ -81,15 +91,15 @@ namespace MegaDesk
             lblMaterialCost.Text = Math.Round(d.computeSurfaceMaterialCost(), 2).ToString("F");
 
             // Shipping details
-            string shippingMethod = null;
+            string _shippingMethod = null;
             if (rushOptionDays != 14)
             {
-                shippingMethod = $"Rush - {rushOptionDays} Days";
+                _shippingMethod = $"Rush - {rushOptionDays} Days";
             } else
             {
-                shippingMethod = $"Normal - {rushOptionDays} Days";
+                _shippingMethod = $"Normal - {rushOptionDays} Days";
             }
-            lblShippingMethod.Text = shippingMethod;
+            lblShippingMethod.Text = _shippingMethod;
             lblShippingCost.Text = Math.Round(d.computeShippingCost(), 2).ToString("F");
 
             // Total cost
@@ -99,6 +109,19 @@ namespace MegaDesk
             DeskQuote dq = new DeskQuote(d, Convert.ToDateTime(dtDateCreated.Value), txtName.Text);
             dq.saveDeskQuote(dq);
             dq.displayDeskQuotes();
+
+            DisplayQuote displayQuote = new DisplayQuote();
+            dateCreated = dtDateCreated.Text;
+            customerName = txtName.Text;
+            totalSize = $"{Math.Round(d.computeSurfaceArea(width, depth), 2)}";
+            sizeCost = Math.Round(d.computeDeskSizeCost(), 2).ToString("F");
+            drawerCost = Math.Round(d.computeDrawerCost(), 2).ToString("F");
+            material = surfaceMaterial;
+            materialCost = Math.Round(d.computeSurfaceMaterialCost(), 2).ToString("F");
+            shippingMethod = _shippingMethod;
+            shippingCost = Math.Round(d.computeShippingCost(), 2).ToString("F");
+            totalCost = Math.Round(d.computeDeskPrice(), 2).ToString("F");
+            displayQuote.ShowDialog();
         }
     }
 }

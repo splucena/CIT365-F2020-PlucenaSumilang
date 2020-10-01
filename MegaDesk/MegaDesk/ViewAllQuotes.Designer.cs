@@ -100,9 +100,9 @@
             this.lvQuotes.FullRowSelect = true;
             this.lvQuotes.GridLines = true;
             this.lvQuotes.HideSelection = false;
-            this.lvQuotes.Location = new System.Drawing.Point(8, 21);
+            this.lvQuotes.Location = new System.Drawing.Point(8, 24);
             this.lvQuotes.Name = "lvQuotes";
-            this.lvQuotes.Size = new System.Drawing.Size(561, 441);
+            this.lvQuotes.Size = new System.Drawing.Size(561, 438);
             this.lvQuotes.TabIndex = 0;
             this.lvQuotes.UseCompatibleStateImageBehavior = false;
             this.lvQuotes.SelectedIndexChanged += new System.EventHandler(this.lvQuotes_SelectedIndexChanged);
@@ -189,7 +189,7 @@
             this.tlpQuote.Controls.Add(this.lblCostPerIn, 2, 3);
             this.tlpQuote.Controls.Add(this.lblTotalCost, 2, 12);
             this.tlpQuote.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tlpQuote.Location = new System.Drawing.Point(8, 21);
+            this.tlpQuote.Location = new System.Drawing.Point(8, 24);
             this.tlpQuote.Name = "tlpQuote";
             this.tlpQuote.RowCount = 13;
             this.tlpQuote.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.692308F));
@@ -205,7 +205,7 @@
             this.tlpQuote.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.692308F));
             this.tlpQuote.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.692308F));
             this.tlpQuote.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.692308F));
-            this.tlpQuote.Size = new System.Drawing.Size(248, 441);
+            this.tlpQuote.Size = new System.Drawing.Size(248, 438);
             this.tlpQuote.TabIndex = 2;
             // 
             // lblShippingCost
@@ -357,7 +357,7 @@
             this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.label21.Location = new System.Drawing.Point(3, 396);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(128, 45);
+            this.label21.Size = new System.Drawing.Size(128, 42);
             this.label21.TabIndex = 34;
             this.label21.Text = "Total Cost";
             this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -637,7 +637,7 @@
             this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.label29.Location = new System.Drawing.Point(137, 396);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(16, 45);
+            this.label29.Size = new System.Drawing.Size(16, 42);
             this.label29.TabIndex = 41;
             this.label29.Text = "$";
             this.label29.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -693,7 +693,7 @@
             this.lblTotalCost.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.lblTotalCost.Location = new System.Drawing.Point(159, 396);
             this.lblTotalCost.Name = "lblTotalCost";
-            this.lblTotalCost.Size = new System.Drawing.Size(86, 45);
+            this.lblTotalCost.Size = new System.Drawing.Size(86, 42);
             this.lblTotalCost.TabIndex = 45;
             this.lblTotalCost.Text = "...";
             this.lblTotalCost.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -701,6 +701,7 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.lvQuotes);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(8);
@@ -712,6 +713,7 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.tlpQuote);
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(595, 12);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(8);
@@ -750,6 +752,7 @@
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ViewAllQuotes";
