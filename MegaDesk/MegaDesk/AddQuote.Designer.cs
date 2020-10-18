@@ -38,8 +38,6 @@
             this.cbSurfaceMaterial = new System.Windows.Forms.ComboBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.cbNoOfDrawers = new System.Windows.Forms.NumericUpDown();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.txtDepth = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.txtWidth = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -56,6 +54,8 @@
             this.txtName = new System.Windows.Forms.TextBox();
             this.panel6 = new System.Windows.Forms.Panel();
             this.cbOrderOptions = new System.Windows.Forms.ComboBox();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.txtDepth = new System.Windows.Forms.TextBox();
             this.epCorrect = new System.Windows.Forms.ErrorProvider(this.components);
             this.epInvalid = new System.Windows.Forms.ErrorProvider(this.components);
             this.tableLayoutPanel1.SuspendLayout();
@@ -64,11 +64,11 @@
             this.panel5.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cbNoOfDrawers)).BeginInit();
-            this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel6.SuspendLayout();
+            this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.epCorrect)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.epInvalid)).BeginInit();
             this.SuspendLayout();
@@ -112,6 +112,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.Size = new System.Drawing.Size(404, 417);
             this.tableLayoutPanel1.TabIndex = 0;
+            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
             // 
             // panel8
             // 
@@ -199,34 +200,6 @@
             this.cbNoOfDrawers.Name = "cbNoOfDrawers";
             this.cbNoOfDrawers.Size = new System.Drawing.Size(234, 17);
             this.cbNoOfDrawers.TabIndex = 3;
-            // 
-            // panel3
-            // 
-            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel3.BackColor = System.Drawing.Color.White;
-            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel3.Controls.Add(this.txtDepth);
-            this.panel3.Location = new System.Drawing.Point(144, 108);
-            this.panel3.Margin = new System.Windows.Forms.Padding(8);
-            this.panel3.Name = "panel3";
-            this.panel3.Padding = new System.Windows.Forms.Padding(8, 8, 20, 8);
-            this.panel3.Size = new System.Drawing.Size(252, 34);
-            this.panel3.TabIndex = 13;
-            // 
-            // txtDepth
-            // 
-            this.txtDepth.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtDepth.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtDepth.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.txtDepth.Location = new System.Drawing.Point(8, 8);
-            this.txtDepth.Margin = new System.Windows.Forms.Padding(8);
-            this.txtDepth.Name = "txtDepth";
-            this.txtDepth.Size = new System.Drawing.Size(222, 16);
-            this.txtDepth.TabIndex = 2;
-            this.txtDepth.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDepth_KeyPress);
-            this.txtDepth.Validating += new System.ComponentModel.CancelEventHandler(this.txtDepth_Validating);
             // 
             // panel2
             // 
@@ -477,6 +450,34 @@
             this.cbOrderOptions.Size = new System.Drawing.Size(242, 25);
             this.cbOrderOptions.TabIndex = 5;
             // 
+            // panel3
+            // 
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel3.BackColor = System.Drawing.Color.White;
+            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.txtDepth);
+            this.panel3.Location = new System.Drawing.Point(144, 108);
+            this.panel3.Margin = new System.Windows.Forms.Padding(8);
+            this.panel3.Name = "panel3";
+            this.panel3.Padding = new System.Windows.Forms.Padding(8, 8, 20, 8);
+            this.panel3.Size = new System.Drawing.Size(252, 34);
+            this.panel3.TabIndex = 13;
+            // 
+            // txtDepth
+            // 
+            this.txtDepth.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtDepth.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtDepth.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.txtDepth.Location = new System.Drawing.Point(8, 8);
+            this.txtDepth.Margin = new System.Windows.Forms.Padding(8);
+            this.txtDepth.Name = "txtDepth";
+            this.txtDepth.Size = new System.Drawing.Size(222, 16);
+            this.txtDepth.TabIndex = 2;
+            this.txtDepth.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDepth_KeyPress);
+            this.txtDepth.Validating += new System.ComponentModel.CancelEventHandler(this.txtDepth_Validating);
+            // 
             // epCorrect
             // 
             this.epCorrect.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
@@ -510,8 +511,6 @@
             this.panel5.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.cbNoOfDrawers)).EndInit();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
@@ -519,6 +518,8 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel6.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.epCorrect)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.epInvalid)).EndInit();
             this.ResumeLayout(false);

@@ -234,5 +234,10 @@ namespace MegaDesk
             }
             e.KeyChar = Char.ToUpper(e.KeyChar);
         }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
