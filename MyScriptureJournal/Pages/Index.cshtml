@@ -13,8 +13,9 @@
 
 <form>
     <p>
-        Book | Note: <input type="text" asp-for="SearchString" />
-        <input type="submit" value="Filter" class="btn btn-success" />
+        Find by Book | Note: <input type="text" asp-for="SearchString" />
+        <input type="submit" value="Search" class="btn btn-primary" />
+        | <a asp-page="Index">Back to full List</a>
     </p>
 </form>
 
@@ -22,7 +23,10 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.ScriptureJournal[0].Book)
+                
+                <a asp-page="./Index" asp-route-sortOrder="@Model.BookSort">
+                    @Html.DisplayNameFor(model => model.ScriptureJournal[0].Book)
+                </a>
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.ScriptureJournal[0].Chapter)
@@ -31,7 +35,9 @@
                 @Html.DisplayNameFor(model => model.ScriptureJournal[0].Verse)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ScriptureJournal[0].DateAdded)
+                <a asp-page="./Index" asp-route-sortOrder="@Model.DateAddedSort">
+                    @Html.DisplayNameFor(model => model.ScriptureJournal[0].DateAdded)
+                </a>
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.ScriptureJournal[0].Note)
