@@ -5,10 +5,10 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<h1>DETAILS</h1>
 
 <div>
-    <h4>ScriptureJournal</h4>
+    <h4>@Html.DisplayFor(model => model.ScriptureJournal.Book) @Html.DisplayFor(model => model.ScriptureJournal.Chapter):@Html.DisplayFor(model => model.ScriptureJournal.Verse)</h4>
     <hr />
     <dl class="row">
         <dt class="col-sm-2">

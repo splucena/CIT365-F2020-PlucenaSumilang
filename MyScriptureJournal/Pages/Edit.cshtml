@@ -5,9 +5,9 @@
     ViewData["Title"] = "Update Scripture Journal Entry";
 }
 
-<h1>Update</h1>
+<h1>UPDATE</h1>
 
-<h4>Scripture Journal Entry @Html.DisplayFor(model => model.ScriptureJournal.Book) @Html.DisplayFor(model => model.ScriptureJournal.Chapter):@Html.DisplayFor(model => model.ScriptureJournal.Verse)</h4>
+<h4>@Html.DisplayFor(model => model.ScriptureJournal.Book) @Html.DisplayFor(model => model.ScriptureJournal.Chapter):@Html.DisplayFor(model => model.ScriptureJournal.Verse)</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -40,7 +40,7 @@
                 <span asp-validation-for="ScriptureJournal.Note" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <button type="submit" value="Save" class="btn btn-primary"><i class="fas fa-pen"></i> Save</button>
             </div>
         </form>
     </div>

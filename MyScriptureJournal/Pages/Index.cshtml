@@ -5,25 +5,31 @@
     ViewData["Title"] = "Scripture Journal Entries";
 }
 
-<h1>Scripture Journal Entries</h1>
+<h1>SCRIPTURE JOURNAL ENTRY</h1>
 
 <p>
     <a asp-page="Create">Create New Scripture Journal Entry</a>
 </p>
 
 <form>
-    <p>
-        Find by Book | Note: <input type="text" asp-for="SearchString" />
-        <input type="submit" value="Search" class="btn btn-primary" />
-        | <a asp-page="Index">Back to full List</a>
-    </p>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text">Search by Book | Note:</span>
+        </div>
+        <input type="text" asp-for="SearchString" />
+        <div class="input-group-append">
+            <button type="submit" value="Search" class="btn btn-primary"><i class="fas fa-search"></i> Search</button>
+        </div>
+        <div class="input-group-append">
+            <span class="input-group-text"><a asp-page="Index">Back to full List</a></span>
+        </div>
+    </div>
 </form>
 
 <table class="table">
     <thead>
         <tr>
             <th>
-                
                 <a asp-page="./Index" asp-route-sortOrder="@Model.BookSort">
                     @Html.DisplayNameFor(model => model.ScriptureJournal[0].Book)
                 </a>

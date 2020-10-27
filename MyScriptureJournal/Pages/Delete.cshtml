@@ -5,11 +5,11 @@
     ViewData["Title"] = "Delete Scripture Journal Entry";
 }
 
-<h1>Delete</h1>
+<h1>DELETE</h1>
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>Scripture Journal Entry for @Html.DisplayFor(model => model.ScriptureJournal.Book) @Html.DisplayFor(model => model.ScriptureJournal.Chapter):@Html.DisplayFor(model => model.ScriptureJournal.Verse)</h4>
+    <h4>@Html.DisplayFor(model => model.ScriptureJournal.Book) @Html.DisplayFor(model => model.ScriptureJournal.Chapter):@Html.DisplayFor(model => model.ScriptureJournal.Verse)</h4>
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
@@ -46,7 +46,7 @@
 
     <form method="post">
         <input type="hidden" asp-for="ScriptureJournal.ID" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <button type="submit" value="Delete" class="btn btn-danger"><i class="fas fa-trash"></i> Delete</button>|
         <a asp-page="./Index">Back to List</a>
     </form>
 </div>
