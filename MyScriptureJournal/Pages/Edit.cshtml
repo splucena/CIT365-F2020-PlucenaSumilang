@@ -3,11 +3,16 @@
 
 @{
     ViewData["Title"] = "Update Scripture Journal Entry";
+
+    string book = Model.ScriptureJournal.Book;
+    int chapter = Model.ScriptureJournal.Chapter;
+    int verse = Model.ScriptureJournal.Verse;
+
+    string scripture = $"{book} {chapter}:{verse}";
 }
 
-<h1>UPDATE</h1>
 
-<h4>@Html.DisplayFor(model => model.ScriptureJournal.Book) @Html.DisplayFor(model => model.ScriptureJournal.Chapter):@Html.DisplayFor(model => model.ScriptureJournal.Verse)</h4>
+<h1>UPDATE @scripture</h1>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -36,7 +41,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="ScriptureJournal.Note" class="control-label"></label>
-                <input asp-for="ScriptureJournal.Note" class="form-control" />
+                <textarea asp-for="ScriptureJournal.Note" class="form-control" rows="5"></textarea>
                 <span asp-validation-for="ScriptureJournal.Note" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -47,7 +52,7 @@
 </div>
 
 <div>
-    <a asp-page="./Index">Back to List</a>
+    <a asp-page="./Index"><i class="fas fa-backward"></i> Back to List</a>
 </div>
 
 @section Scripts {

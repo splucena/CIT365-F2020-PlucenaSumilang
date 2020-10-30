@@ -3,12 +3,17 @@
 
 @{
     ViewData["Title"] = "Details";
+
+    string book = Model.ScriptureJournal.Book;
+    int chapter = Model.ScriptureJournal.Chapter;
+    int verse = Model.ScriptureJournal.Verse;
+
+    string scripture = $"{book} {chapter}:{verse}";
 }
 
-<h1>DETAILS</h1>
+<h1>DETAILS @scripture</h1>
 
 <div>
-    <h4>@Html.DisplayFor(model => model.ScriptureJournal.Book) @Html.DisplayFor(model => model.ScriptureJournal.Chapter):@Html.DisplayFor(model => model.ScriptureJournal.Verse)</h4>
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
