@@ -1,8 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace MegaDeskASP.Migrations
 {
-    public partial class Init : Migration
+    public partial class Desk : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -29,6 +30,9 @@ namespace MegaDeskASP.Migrations
                     Width = table.Column<decimal>(nullable: false),
                     Height = table.Column<decimal>(nullable: false),
                     RushOrderDay = table.Column<int>(nullable: false),
+                    CustomerName = table.Column<string>(nullable: false),
+                    Amount = table.Column<decimal>(nullable: false),
+                    DateCreated = table.Column<DateTime>(nullable: false),
                     SurfaceMaterialID = table.Column<int>(nullable: false)
                 },
                 constraints: table =>

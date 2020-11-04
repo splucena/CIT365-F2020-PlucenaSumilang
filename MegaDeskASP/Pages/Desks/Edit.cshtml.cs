@@ -37,8 +37,7 @@ namespace MegaDeskASP.Pages.Desks
             {
                 return NotFound();
             }
-            //ViewData["SurfaceMaterialID"] = new SelectList(_context.SurfaceMaterial, "SurfaceMaterialID", "SurfaceMaterialID");
-            ViewData["SurfaceMaterialID"] = new SelectList(_context.SurfaceMaterial, "SurfaceMaterialID", "Material");
+           ViewData["SurfaceMaterialID"] = new SelectList(_context.SurfaceMaterial, "SurfaceMaterialID", "Material");
             return Page();
         }
 

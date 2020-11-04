@@ -26,7 +26,7 @@ namespace MegaDeskASP.Models
 
         [Display(Name = "Date Created")]
         [DataType(DataType.Date)]
-        public decimal DateCreated { get; set; }
+        public DateTime DateCreated { get; set; }
 
         public int SurfaceMaterialID { get; set; }
         public SurfaceMaterial SurfaceMaterial { get; set; }
