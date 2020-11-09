@@ -20,10 +20,38 @@ namespace MvcMovie.Controllers
         }
 
         // GET: Movies
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string sortOrder, string searchString)
         {
-            var mvcMovieContext = _context.Movie.Include(m => m.Genre);
-            return View(await mvcMovieContext.ToListAsync());
+            ViewData["TitleSortParm"] = String.IsNullOrEmpty(sortOrder) ? "title_desc" : "";
+            ViewData["DateSortParm"] = sortOrder == "ReleasedDate" ? "date_desc" : "ReleasedDate";
+
+            //var mvcMovieContext = _context.Movie.Include(m => m.Genre);
+            var movies = from m in _context.Movie select m;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                movies = movies.Where(s => s.Title.Contains(searchString));
+            }
+
+
+            switch (sortOrder)
+            {
+                case "title_desc":
+                    movies = movies.OrderByDescending(s => s.Title);
+                    break;
+                case "ReleasedDate":
+                    movies = movies.OrderBy(s => s.ReleaseDate);
+                    break;
+                case "date_desc":
+                    movies = movies.OrderByDescending(s => s.ReleaseDate);
+                    break;
+                default:
+                    movies = movies.OrderBy(s => s.Title);
+                    break;
+            }
+
+            //return View(await mvcMovieContext.ToListAsync());
+            return View(await movies.AsNoTracking().ToListAsync());
         }
 
         // GET: Movies/Details/5
