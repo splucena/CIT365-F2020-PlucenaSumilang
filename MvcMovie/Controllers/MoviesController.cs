@@ -14,6 +14,11 @@ namespace MvcMovie.Controllers
     {
         private readonly MvcMovieContext _context;
 
+        //public string MovieGenreDesc { get; set; }
+        //public SelectList GenreDesc { get; set; }
+
+        public IList<Movie> Movies { get; set; }
+
         public MoviesController(MvcMovieContext context)
         {
             _context = context;
@@ -25,8 +30,11 @@ namespace MvcMovie.Controllers
             ViewData["TitleSortParm"] = String.IsNullOrEmpty(sortOrder) ? "title_desc" : "";
             ViewData["DateSortParm"] = sortOrder == "ReleasedDate" ? "date_desc" : "ReleasedDate";
 
+            //Movies = await _context.Movie
+            //    .Include(g => g.Genre).ToListAsync();
             //var mvcMovieContext = _context.Movie.Include(m => m.Genre);
-            var movies = from m in _context.Movie select m;
+            //var movies = from m in _context.Movie join g in _context.Genre on m.GenreID equals g.GenreID select m;
+            var movies = from m in _context.Movie.Include(m => m.Genre) select m;
 
             if (!String.IsNullOrEmpty(searchString))
             {
@@ -49,6 +57,13 @@ namespace MvcMovie.Controllers
                     movies = movies.OrderBy(s => s.Title);
                     break;
             }
+
+            // Genre
+            //IQueryable<string> genreDescQuery = from g in _context.Genre
+            //                                    orderby g.Description
+            //                                    select g.Description;
+
+            //GenreDesc = new SelectList(await genreDescQuery.Distinct().ToListAsync());
 
             //return View(await mvcMovieContext.ToListAsync());
             return View(await movies.AsNoTracking().ToListAsync());

@@ -1,17 +1,17 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+//using MvcMovie.Migrations;
+using MvcMovie.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace MvcMovie.Models
+namespace MvcMovie.ViewModel
 {
-    public class Movie
-    {
-        [Key]
-        public int MovieId { get; set; }
-
+    public class MovieCreateViewModel
+    {        
         [Required]
         public string Title { get; set; }
 
@@ -30,6 +30,6 @@ namespace MvcMovie.Models
         [Column(TypeName = "decimal(18, 2)")]
         public decimal Price { get; set; }
 
-        public string PhotoPath { get; set; }
+        public IFormFile Photo { get; set; }
     }
 }

@@ -45,6 +45,9 @@ namespace MvcMovie.Migrations
                     b.Property<int>("GenreID")
                         .HasColumnType("int");
 
+                    b.Property<string>("PhotoPath")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18, 2)");
 
