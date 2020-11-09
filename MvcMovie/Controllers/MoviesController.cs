@@ -158,7 +158,18 @@ namespace MvcMovie.Controllers
                 return NotFound();
             }
             ViewData["GenreID"] = new SelectList(_context.Genre, "GenreID", "Description", movie.GenreID);
-            return View(movie);
+
+            MovieEditViewModel m = new MovieEditViewModel
+            {
+                MovieId = movie.MovieId,
+                Title = movie.Title,
+                ReleaseDate = movie.ReleaseDate,
+                Price = movie.Price,
+                GenreID = movie.GenreID
+            };
+
+            //return View(movie);
+            return View(m);
         }
 
         // POST: Movies/Edit/5
@@ -166,7 +177,8 @@ namespace MvcMovie.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("MovieId,Title,ReleaseDate,GenreID,Price")] Movie movie)
+        //public async Task<IActionResult> Edit(int id, [Bind("MovieId,Title,ReleaseDate,GenreID,Price")] Movie movie)
+        public async Task<IActionResult> Edit(int id, [Bind("MovieId,Title,ReleaseDate,GenreID,Price,Photo")] MovieEditViewModel movie)
         {
             if (id != movie.MovieId)
             {
@@ -177,7 +189,29 @@ namespace MvcMovie.Controllers
             {
                 try
                 {
-                    _context.Update(movie);
+                    string uniqueFilename = null;
+                    if (movie.Photo != null)
+                    {
+
+                        string uploadsFolder = Path.Combine(hostingEnvironment.WebRootPath, "images");
+                        uniqueFilename = Guid.NewGuid().ToString() + "_" + movie.Photo.FileName;
+                        string filePath = Path.Combine(uploadsFolder, uniqueFilename);
+                        movie.Photo.CopyTo(new FileStream(filePath, FileMode.Create));
+                    }
+
+                    Movie m = new Movie
+                    {
+                        MovieId = movie.MovieId,
+                        Title = movie.Title,
+                        ReleaseDate = movie.ReleaseDate,
+                        GenreID = movie.GenreID,
+                        Price = movie.Price,
+                        PhotoPath = uniqueFilename
+                    };
+                    
+
+                    //_context.Update(movie);
+                    _context.Update(m);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
