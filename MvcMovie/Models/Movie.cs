@@ -30,6 +30,7 @@ namespace MvcMovie.Models
         [Column(TypeName = "decimal(18, 2)")]
         public decimal Price { get; set; }
 
+        [Display(Name = "Thumbnail")]
         public string PhotoPath { get; set; }
     }
 }

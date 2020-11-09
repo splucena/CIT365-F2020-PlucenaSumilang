@@ -1,27 +1,34 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MvcMovie.Data;
 using MvcMovie.Models;
+using MvcMovie.ViewModel;
 
 namespace MvcMovie.Controllers
 {
     public class MoviesController : Controller
     {
         private readonly MvcMovieContext _context;
+        private readonly IHostingEnvironment hostingEnvironment;
 
         //public string MovieGenreDesc { get; set; }
         //public SelectList GenreDesc { get; set; }
 
         public IList<Movie> Movies { get; set; }
 
-        public MoviesController(MvcMovieContext context)
+        [Obsolete]
+        public MoviesController(MvcMovieContext context,
+                                IHostingEnvironment hostingEnvironment)
         {
             _context = context;
+            this.hostingEnvironment = hostingEnvironment;
         }
 
         // GET: Movies
@@ -100,15 +107,40 @@ namespace MvcMovie.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("MovieId,Title,ReleaseDate,GenreID,Price")] Movie movie)
+        //public async Task<IActionResult> Create([Bind("MovieId,Title,ReleaseDate,GenreID,Price")] Movie movie)
+        public async Task<IActionResult> Create([Bind("MovieId,Title,ReleaseDate,GenreID,Price,Photo")] MovieCreateViewModel movie)
         {
+            
+
             if (ModelState.IsValid)
             {
-                _context.Add(movie);
+                string uniqueFilename = null;
+                if (movie.Photo != null)
+                {
+
+                    string uploadsFolder = Path.Combine(hostingEnvironment.WebRootPath, "images");
+                    uniqueFilename = Guid.NewGuid().ToString() + "_" + movie.Photo.FileName;
+                    string filePath = Path.Combine(uploadsFolder, uniqueFilename);
+                    movie.Photo.CopyTo(new FileStream(filePath, FileMode.Create));
+                }
+
+                Movie m = new Movie
+                {
+                    Title = movie.Title,
+                    ReleaseDate = movie.ReleaseDate,
+                    GenreID = movie.GenreID,
+                    Price = movie.Price,
+                    PhotoPath = uniqueFilename
+                };
+
+                //_context.Add(movie);
+                _context.Add(m);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index));                
             }
+
             ViewData["GenreID"] = new SelectList(_context.Genre, "GenreID", "Description", movie.GenreID);
+            //return View(movie);
             return View(movie);
         }
 
