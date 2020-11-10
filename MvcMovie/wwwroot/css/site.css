@@ -182,3 +182,15 @@ body {
     min-width: 15rem; 
     max-width:22.5%;
 }
+
+.home-container {
+    width: 50%;
+    margin: 0 auto;
+    background-color: #D83F87;
+    padding: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+.home-container h1 {
+    color: #2A1B3D;
+}
