@@ -107,6 +107,7 @@ h1, h2, h3, h4, h5, h6,
 body {
     /* Margin bottom by footer height */
     background-color: #44318D;
+    font-family: "Quattrocento", serif;
     margin-bottom: 60px;
 }
 
@@ -114,12 +115,12 @@ body {
     color: #FFF;
 }
 
-    .table th {
-        background-color: #2A1B3D;
-    }
+.table th {
+    background-color: #2A1B3D;
+}
 
-    .table td {
-    }
+.table td {
+}
 
 .footer {
   position: absolute;
@@ -133,7 +134,51 @@ body {
     background-color: #2A1B3D;
 }
 
+.btn {
+    border-radius: 0 !important;
+}
+
 .img-thumbnail {
-    height: 200px;
-    width: 150px;
+    height: 350px;
+    width: auto;
+}
+
+.card-deck {
+    color: #000 !important;
+}
+
+.card {
+    border: solid 1px #2A1B3D !important;
+    border-radius: 0 !important;
+}
+
+.card-header {
+    background-color: #2A1B3D;
+    border-radius: 0 !important;
+}
+
+.card-img {
+    border-radius: 0 !important;
+}
+
+.card-header h5 {
+    color: #FFF;
+}
+
+.card-body {
+    color: #2A1B3D;
+}
+
+.card-footer {
+    background-color: #2A1B3D;
+    border-radius: 0 !important;
+}
+
+.card-body div {
+    color: #2A1B3D !important;
+}
+
+.card-display {
+    min-width: 15rem; 
+    max-width:22.5%;
 }
