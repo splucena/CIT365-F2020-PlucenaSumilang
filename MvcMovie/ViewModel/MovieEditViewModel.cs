@@ -21,7 +21,6 @@ namespace MvcMovie.ViewModel
         [DataType(DataType.Date)]
         [Display(Name = "Release Date")]
         public DateTime ReleaseDate { get; set; }
-        //public string Genre { get; set; }
 
         [Display(Name = "Genre")]
         public int GenreID { get; set; }

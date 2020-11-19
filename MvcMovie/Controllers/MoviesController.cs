@@ -17,10 +17,7 @@ namespace MvcMovie.Controllers
     {
         private readonly MvcMovieContext _context;
         private readonly IHostingEnvironment hostingEnvironment;
-
-        //public string MovieGenreDesc { get; set; }
-        //public SelectList GenreDesc { get; set; }
-
+       
         public IList<Movie> Movies { get; set; }
 
         [Obsolete]
@@ -37,17 +34,12 @@ namespace MvcMovie.Controllers
             ViewData["TitleSortParm"] = String.IsNullOrEmpty(sortOrder) ? "title_desc" : "";
             ViewData["DateSortParm"] = sortOrder == "ReleasedDate" ? "date_desc" : "ReleasedDate";
 
-            //Movies = await _context.Movie
-            //    .Include(g => g.Genre).ToListAsync();
-            //var mvcMovieContext = _context.Movie.Include(m => m.Genre);
-            //var movies = from m in _context.Movie join g in _context.Genre on m.GenreID equals g.GenreID select m;
             var movies = from m in _context.Movie.Include(m => m.Genre) select m;
 
             if (!String.IsNullOrEmpty(searchString))
             {
                 movies = movies.Where(s => s.Title.Contains(searchString));
             }
-
 
             switch (sortOrder)
             {
@@ -65,14 +57,6 @@ namespace MvcMovie.Controllers
                     break;
             }
 
-            // Genre
-            //IQueryable<string> genreDescQuery = from g in _context.Genre
-            //                                    orderby g.Description
-            //                                    select g.Description;
-
-            //GenreDesc = new SelectList(await genreDescQuery.Distinct().ToListAsync());
-
-            //return View(await mvcMovieContext.ToListAsync());
             return View(await movies.AsNoTracking().ToListAsync());
         }
 
@@ -107,7 +91,6 @@ namespace MvcMovie.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        //public async Task<IActionResult> Create([Bind("MovieId,Title,ReleaseDate,GenreID,Price")] Movie movie)
         public async Task<IActionResult> Create([Bind("MovieId,Title,ReleaseDate,GenreID,Price,Photo")] MovieCreateViewModel movie)
         {
             
@@ -133,14 +116,12 @@ namespace MvcMovie.Controllers
                     PhotoPath = uniqueFilename
                 };
 
-                //_context.Add(movie);
                 _context.Add(m);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));                
             }
 
             ViewData["GenreID"] = new SelectList(_context.Genre, "GenreID", "Description", movie.GenreID);
-            //return View(movie);
             return View(movie);
         }
 
@@ -168,7 +149,6 @@ namespace MvcMovie.Controllers
                 GenreID = movie.GenreID
             };
 
-            //return View(movie);
             return View(m);
         }
 
@@ -177,7 +157,6 @@ namespace MvcMovie.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        //public async Task<IActionResult> Edit(int id, [Bind("MovieId,Title,ReleaseDate,GenreID,Price")] Movie movie)
         public async Task<IActionResult> Edit(int id, [Bind("MovieId,Title,ReleaseDate,GenreID,Price,Photo")] MovieEditViewModel movie)
         {
             if (id != movie.MovieId)
@@ -209,8 +188,6 @@ namespace MvcMovie.Controllers
                         PhotoPath = uniqueFilename
                     };
                     
-
-                    //_context.Update(movie);
                     _context.Update(m);
                     await _context.SaveChangesAsync();
                 }

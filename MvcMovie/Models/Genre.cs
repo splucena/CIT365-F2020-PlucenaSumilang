@@ -13,5 +13,13 @@ namespace MvcMovie.Models
 
         [Required]
         public string Description { get; set; }
+
+        private bool Sum(int a, int b, int c)
+        {
+            bool v = !((a <= 0 || b <= 0) && (a <= 0 || c <= 0) && (b <= 0 || c <= 0) || c <= 0);
+            return v;
+        }
     }
+
+   
 }
