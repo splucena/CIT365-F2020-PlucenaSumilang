@@ -69,3 +69,92 @@ body {
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
 }
+
+/* custom css 
+    #E7717D pink
+    #C2CAD0 shade of blue
+    #C2B9B0 shade of brown light
+    #7E685A brown
+    #AFD275 shade of green
+
+*/
+
+body {
+    background-image: url('../img/u.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    font-family: 'Playfair Display', serif;
+    color: #FFF;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Source Sans Pro', sans-serif;
+    
+}
+
+h1, h2, h3, h4 {
+    color: #020526 !important;
+}
+
+a {
+    color: #FFF !important;
+    text-decoration: none;
+}
+
+nav {
+    background-color: #7E685A !important;    
+}
+
+.banner {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    color: #272727;
+    margin: auto 0;
+    text-align: center;
+}
+
+.col-md-4,
+.col-md-8 {
+    background-color: rgba(126,104,90, 0.7);
+    padding: 15px;
+}
+
+.col-md-8 {
+    text-align: center;
+}
+
+.light-brown-bg {
+    background-color: rgba(126,104,90, 0.7);
+    padding: 15px;
+}
+
+.dark {
+    color: #272727;
+}
+
+hr {
+    color: #FFF !important;
+    border: none;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+    table th {
+        background-color: #7E685A;
+        border-top: solid 1px #C2B9B0 !important;
+        border-bottom: solid 1px #C2B9B0 !important;
+        color: #FFF;
+    }
+
+    table td {
+        background-color: rgba(194,185,176, 0.8);
+        border-bottom: solid 1px #7E685A !important;
+    }
+
+footer {
+    color: #FFF !important;
+    background-color: #272727;
+}

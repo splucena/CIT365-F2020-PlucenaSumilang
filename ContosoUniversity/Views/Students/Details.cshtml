@@ -6,7 +6,7 @@
 
 <h1>Details</h1>
 
-<div>
+<div class="light-brown-bg">
     <h4>Student</h4>
     <hr />
     <dl class="row">
@@ -53,7 +53,8 @@
         </dd>
     </dl>
 </div>
+<br>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.ID">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model.ID" class="btn btn-success">Edit</a>
+    <a asp-action="Index" class="btn btn-success">Back to List</a>
 </div>

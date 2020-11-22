@@ -26,24 +26,23 @@
                 <label asp-for="Credits" class="control-label"></label>
                 <input asp-for="Credits" class="form-control" />
                 <span asp-validation-for="Credits" class="text-danger"></span>
-            </div>
+            </div>            
             <div class="form-group">
-                <div class="form-group">
-                    <label asp-for="Department" class="control-label"></label>
-                    <select asp-for="DepartmentID" class="form-control" asp-items="ViewBag.DepartmentID">
-                        <option value="">-- Select Department --</option>
-                    </select>
-                    <span asp-validation-for="DepartmentID" class="text-danger" />
-                </div>
+                <label asp-for="Department" class="control-label"></label>
+                <select asp-for="DepartmentID" class="form-control" asp-items="ViewBag.DepartmentID">
+                    <option value="">-- Select Department --</option>
+                </select>
+                <span asp-validation-for="DepartmentID" class="text-danger" />
+            </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
-
+<br>
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index" class="btn btn-success">Back to List</a>
 </div>
 
 @section Scripts {
