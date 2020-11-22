@@ -51,6 +51,8 @@ namespace ContosoUniversity.Controllers
                 viewModel.Enrollments = viewModel.Courses.Where(
                     x => x.CourseID == courseID).Single().Enrollments;
 
+                //InvalidOperationException: Navigation property 'Enrollments' on entity of type 'Course' cannot be loaded because the entity is not being tracked. 
+                //Navigation properties can only be loaded for tracked entities.
                 /*var selectedCourse = viewModel.Courses.Where(x => x.CourseID == courseID).Single();
                 await _context.Entry(selectedCourse).Collection(x => x.Enrollments).LoadAsync();
                 foreach (Enrollment enrollment in selectedCourse.Enrollments)
