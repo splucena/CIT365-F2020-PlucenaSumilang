@@ -83,7 +83,7 @@
             }
             <tr class="@selectedRow">
                 <td>
-                    @Html.ActionLink("Select", "Index", new { courseID = item.CourseID })
+                    @Html.ActionLink("Select", "Index", new { courseID = item.CourseID }, new { @class = "btn btn-success" })
                 </td>
                 <td>
                     @item.CourseID

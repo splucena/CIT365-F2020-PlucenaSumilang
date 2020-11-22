@@ -94,7 +94,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1, h2, h3, h4 {
-    color: #020526 !important;
+    color: #272727 !important;
 }
 
 a {
@@ -150,9 +150,14 @@ table {
     }
 
     table td {
-        background-color: rgba(194,185,176, 0.8);
+        background-color: rgba(255,255,255, 0.8);
         border-bottom: solid 1px #7E685A !important;
     }
+
+.table-courses {
+    background-color: transparent !important;
+    border-bottom: none !important;
+}
 
 footer {
     color: #FFF !important;
