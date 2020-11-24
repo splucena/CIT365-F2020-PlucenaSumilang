@@ -4,6 +4,8 @@
     ViewData["Title"] = "Edit";
 }
 
+
+
 <h1>Edit</h1>
 
 <h4>Instructor</h4>
@@ -64,13 +66,13 @@
                     <input type="submit" value="Save" class="btn btn-primary" />
                 </div>
             </form>
+        </div>
     </div>
-</div>
-<br>
-<div>
-    <a asp-action="Index" class="btn btn-success">Back to List</a>
-</div>
+    <br>
+    <div>
+        <a asp-action="Index" class="btn btn-success">Back to List</a>
+    </div>
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
